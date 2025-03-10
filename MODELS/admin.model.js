@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { ticketing, generalFinance } = require('.');
 
 module.exports = (mongoose) => {
   const adminSchema = new mongoose.Schema({
@@ -83,6 +84,11 @@ module.exports = (mongoose) => {
       generalFinanceRecruiting: {
         type: String,
         enum: ['read', 'write', 'readwrite', 'none'],
+        default: 'none',
+      },
+      task: {
+        type: String,
+        enum: ['read', 'write', 'readwrite','admin', 'none'],
         default: 'none',
       },
       users: {
