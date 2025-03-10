@@ -25,78 +25,21 @@ module.exports = (mongoose) => {
       type: String,
       required: true,
     },
+    role: {
+      type: String,
+      enum: ['admin', 'user', 'coach'],
+      default: 'user',
+    },
+    language: {
+      type: String,
+      default: 'English',
+    },
+    age: {
+      type: Number,
+      required: true,
+    },
     permissions: {
       ticketing: {
-        type: String,
-        enum: ['read', 'write', 'readwrite', 'none'],
-        default: 'none',
-      },
-      packages: {
-        type: String,
-        enum: ['read', 'write', 'readwrite', 'none'],
-        default: 'none',
-      },
-      visa: {
-        type: String,
-        enum: ['read', 'write', 'readwrite', 'none'],
-        default: 'none',
-      },
-      wholesalers: {
-        type: String,
-        enum: ['read', 'write', 'readwrite', 'none'],
-        default: 'none',
-      },
-      customers: {
-        type: String,
-        enum: ['read', 'write', 'readwrite', 'none'],
-        default: 'none',
-      },
-      recruitment: {
-        type: String,
-        enum: ['read', 'write', 'readwrite', 'none'],
-        default: 'none',
-      },
-      allreports: {
-        type: String,
-        enum: ['read', 'write', 'readwrite', 'none'],
-        default: 'none',
-      },
-      laborReports: {
-        type: String,
-        enum: ['read', 'write', 'readwrite', 'none'],
-        default: 'none',
-      },
-      generalExpense: {
-        type: String,
-        enum: ['read', 'write', 'readwrite', 'none'],
-        default: 'none',
-      },
-      generalFinance: {
-        type: String,
-        enum: ['read', 'write', 'readwrite', 'none'],
-        default: 'none',
-      },
-      generalExpenseRecruiting: {
-        type: String,
-        enum: ['read', 'write', 'readwrite', 'none'],
-        default: 'none',
-      },
-      generalFinanceRecruiting: {
-        type: String,
-        enum: ['read', 'write', 'readwrite', 'none'],
-        default: 'none',
-      },
-      task: {
-        type: String,
-        enum: ['read', 'write', 'readwrite','admin', 'none'],
-        default: 'none',
-      },
-      users: {
-        type: String,
-        enum: ['read', 'write', 'readwrite', 'none'],
-        default: 'none',
-      },
-      notes: {
         type: String,
         enum: ['read', 'write', 'readwrite', 'none'],
         default: 'none',

@@ -16,7 +16,7 @@ exports.registerAdmin = async (req, res) => {
     // if (userPermissions.users !== 'write' && userPermissions.users !== 'readwrite') {
     //   return res.status(403).json({ error: 'Unauthorized: Insufficient permissions to register Admin' });
     // }
-    const { firstname, lastname, email, phone, password, permissions } = req.body;
+    const { firstname, lastname, email, phone, password, permissions, language,age, role } = req.body;
     // Check if the email already exists
     const existingAdmin = await Admin.findOne({ email });
     if (existingAdmin) {
@@ -24,7 +24,7 @@ exports.registerAdmin = async (req, res) => {
     }
 
     // Create a new admin
-    const newAdmin = await Admin.create({ firstname, lastname, email, phone, password });
+    const newAdmin = await Admin.create({ firstname, lastname, email, phone, password, language, age, role });
     const token = generateToken(newAdmin._id);
 
     res.status(201).json({
@@ -64,7 +64,9 @@ exports.loginAdmin = async (req, res) => {
       firstname: admin.firstname,
       lastname: admin.lastname,
       email: admin.email,
-      permissions: admin.permissions,
+      role:admin.role,
+      age: admin.age,
+      language: admin.language,
       token
     });
   } catch (error) {
