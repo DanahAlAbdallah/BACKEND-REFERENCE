@@ -68,3 +68,44 @@ exports.login = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+
+// Get all users
+exports.getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find({role:'user'});
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// Get all admins
+exports.getAllAdmins = async (req, res) => {
+    try {
+        const admins = await User.find({ role: 'admin' });
+        res.status(200).json(admins);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// Get all coaches
+exports.getAllCoaches = async (req, res) => {
+    try {
+        const coaches = await User.find({ role: 'coach' });
+        res.status(200).json(coaches);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// Get all users (including admins and coaches)
+exports.getAllRoles = async (req, res) => {
+    try {
+        const users = await User.find({}, 'firstName lastName email role');
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
