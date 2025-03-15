@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 mongoose.Promise = global.Promise;
-console.log("MONGODB_URI:", process.env.MONGODB_URI); // Debugging line
+// console.log("MONGODB_URI:", process.env.MONGODB_URI); // Debugging line
 
 const mongodbUri = process.env.MONGODB_URI;
 
@@ -14,6 +14,6 @@ if (!mongodbUri) {
 const db = {};
 db.mongoose = mongoose;
 db.url = mongodbUri;
-db.admins = require('./admin.model.js')(mongoose);
+db.admins = require('./user.model.js')(mongoose);
 
 module.exports = db;

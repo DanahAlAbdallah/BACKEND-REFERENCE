@@ -2,11 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const app = express();
-const db = require('./models');
-// console.log("DB Object:", db);
-// console.log("Mongoose Object:", db.mongoose);
-// console.log("DB URL:", db.url);
-
+const db = require('./MODELS');
 db.mongoose
     .connect(db.url)
     .then(() => {
@@ -21,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-require('./routes')(app);
+require('./ROUTES')(app);
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
