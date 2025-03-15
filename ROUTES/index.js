@@ -1,6 +1,6 @@
 module.exports = app => {
     const Routes = require('./routeConstants')
-    const adminRouter = require("../routes/admin.routes");
+    const userRouter = require("../ROUTES/user.routes");
 
 
-    app.use(Routes.BASE, adminRouter)}
+    app.use(Routes.BASE, userRouter)}

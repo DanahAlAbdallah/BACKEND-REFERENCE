@@ -1,7 +1,7 @@
 // middlewares/authMiddleware.js
 const jwt = require('jsonwebtoken');
-const db = require('../models')
-const Admin = db.admins;
+const db = require('../MODELS')
+const User = db.users;
 
 const authMiddleware = async (req, res, next) => {
   let token;
@@ -10,7 +10,7 @@ const authMiddleware = async (req, res, next) => {
     try {
       token = req.headers.authorization.split(' ')[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.adminId = decoded.id; // Attach admin ID to request object
+      req.userId = decoded.id; // Attach admin ID to request object
       next();
     } catch (error) {
       res.status(401).json({ error: 'Not authorized, token failed' });
